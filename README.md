@@ -2,8 +2,9 @@
 
 Official implementation accompanying the paper:
 
-> **A Mathematical Theory of Reusable Neural Bases for Network Compression**  
-> Binshuai Wang, Peng Wei  
+> **[A Mathematical Theory of Reusable Neural Bases for Network Compression](docs/LRNBA.pdf)**  
+
+[//]: # (> Binshuai Wang, Peng Wei  )
 
 [//]: # (> *International Conference on Learning Representations &#40;ICLR&#41;, 2025*)
 
