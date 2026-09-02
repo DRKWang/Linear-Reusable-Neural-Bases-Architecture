@@ -73,7 +73,7 @@ LRNBA follows two principles:
 
 The architecture contains:
 
-- reusable neural bases $\{\phi_j\}_{j=1}^{m}$;
+- reusable neural bases $\{\phi_j\}$;
 - a coefficient table $\{\alpha_{j,l}\}$ over basis index and network depth.
 
 Because the coefficient table is much smaller than storing independent full-weight matrices for every block, the parameter count becomes almost decoupled from network depth.
@@ -85,7 +85,7 @@ For an FFN-based residual network:
 ```text
 for each depth i:
     a = reused_sensors(x)
-    a = GELU(a)
+    a = activation(a)
     a = a * coefficient_table[:, i]
     a = reused_responses(a)
     x = x + a
@@ -154,7 +154,7 @@ The neural-basis concept also extends to multi-head attention.
 For attention head $j$,
 
 $$
-A_j(x) = \operatorname{softmax} \left(\frac{q_jk_j^\top}{\sqrt{d_H}} \right)v_j,
+A_j(x) = softmax \left(\frac{q_jk_j^\top}{\sqrt{d_H}} \right)v_j,
 $$
 
 where
@@ -166,7 +166,7 @@ $$
 Each attention head can be viewed as an **attention neural basis**. A coefficient-weighted attention block is
 
 $$
-\operatorname{Attn}_{\alpha}(x)= \operatorname{Concat} \left(\alpha_1A_1(x),\ldots,\alpha_HA_H(x)\right)O.
+Attn_{\alpha}(x)= Concat \left(\alpha_1A_1(x),\ldots,\alpha_HA_H(x)\right)O.
 $$
 
 ## Projection Neural Bases
