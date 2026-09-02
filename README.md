@@ -41,18 +41,13 @@ $$
 the residual component can be decomposed as
 
 $$
-R(x)
-=
-\sum_{j=1}^{m}
-\sigma(\langle x,s_j\rangle+b_j)p_j.
+R(x) = \sum_{j=1}^{m} \sigma(\langle x,s_j\rangle+b_j)p_j.
 $$
 
 Define
 
 $$
-\phi_j(x)
-=
-\sigma(\langle x,s_j\rangle+b_j)p_j
+\phi_j(x) = \sigma(\langle x,s_j\rangle+b_j)p_j
 $$
 
 as a **neural basis**. Then
@@ -64,10 +59,7 @@ $$
 LRNBA reuses the same neural bases across depth. The residual block at depth $l$ is constructed as
 
 $$
-R_l(x)
-=
-\sum_{j=1}^{m}
-\alpha_{j,l}\phi_j(x),
+R_l(x) = \sum_{j=1}^{m} \alpha_{j,l}\phi_j(x),
 $$
 
 where $\alpha_{j,l}$ is a learnable coefficient controlling the contribution of neural basis $j$ at depth $l$.
@@ -133,9 +125,7 @@ Simultaneously zero-initializing both response layers and the coefficient table 
 Each neural basis
 
 $$
-\phi_j(x)
-=
-\sigma(\langle x,s_j\rangle+b_j)p_j
+\phi_j(x) = \sigma(\langle x,s_j\rangle+b_j)p_j
 $$
 
 can be interpreted as a vector field from input space to output space:
@@ -164,31 +154,19 @@ The neural-basis concept also extends to multi-head attention.
 For attention head $j$,
 
 $$
-A_j(x)
-=
-\operatorname{softmax}
-\left(
-\frac{q_jk_j^\top}{\sqrt{d_H}}
-\right)v_j,
+A_j(x) = \operatorname{softmax} \left(\frac{q_jk_j^\top}{\sqrt{d_H}} \right)v_j,
 $$
 
 where
 
 $$
-q_j=Q_jx,\qquad
-k_j=K_jx,\qquad
-v_j=V_jx.
+q_j=Q_jx,\qquad k_j=K_jx,\qquad v_j=V_jx.
 $$
 
 Each attention head can be viewed as an **attention neural basis**. A coefficient-weighted attention block is
 
 $$
-\operatorname{Attn}_{\alpha}(x)
-=
-\operatorname{Concat}
-\left(
-\alpha_1A_1(x),\ldots,\alpha_HA_H(x)
-\right)O.
+\operatorname{Attn}_{\alpha}(x)= \operatorname{Concat} \left(\alpha_1A_1(x),\ldots,\alpha_HA_H(x)\right)O.
 $$
 
 ## Projection Neural Bases
@@ -196,26 +174,19 @@ $$
 A projection block can be decomposed as
 
 $$
-P(Sx+b)
-=
-\sum_{j=1}^{m}
-(\langle x,s_j\rangle+b_j)p_j.
+P(Sx+b)= \sum_{j=1}^{m} (\langle x,s_j\rangle+b_j)p_j.
 $$
 
 Each projection basis
 
 $$
-\phi_j(x)
-=
-(\langle x,s_j\rangle+b_j)p_j
+\phi_j(x)= (\langle x,s_j\rangle+b_j)p_j
 $$
 
 corresponds to the rank-one affine transformation
 
 $$
-\phi_j(x)
-=
-p_js_j^\top x+p_jb_j.
+\phi_j(x)= p_js_j^\top x+p_jb_j.
 $$
 
 ## Sub-Neural Reuse
@@ -339,9 +310,7 @@ During inference, this overhead can be reduced by **precomputing and caching the
 The coefficient table provides a natural measure of basis importance:
 
 $$
-E(\phi_j)
-=
-\sum_{l=1}^{L}\alpha_{j,l}^{2}.
+E(\phi_j)= \sum_{l=1}^{L}\alpha_{j,l}^{2}.
 $$
 
 Bases with low energy may contribute less to the model and could potentially be pruned for further compression.
