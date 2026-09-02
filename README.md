@@ -228,7 +228,7 @@ $$
 
 - Samples: 60,000
 - Domain: $[-1,1]$
-- Train/test split: 3:1
+- Train/test split: 3/1
 
 ### Training Setup
 
@@ -274,7 +274,6 @@ The results show that depth expansion gives larger gains than width expansion in
 - Attention heads: $H=8$
 - Head dimension: 64
 - FFN hidden dimension: 2048
-- Dropout: 0
 
 ### Training Setup
 
@@ -333,21 +332,6 @@ LRNBA introduces:
 The primary limitation is increased training time and energy consumption. Dynamically constructing block-specific transformations introduces additional computation during training, especially as the number of reusable bases grows.
 
 The paper notes that this overhead can be eliminated during inference by precomputing and caching effective block weights.
-
-## Repository Usage
-
-Repository-specific installation commands, file structure, and command-line interfaces are not specified in the paper. Add them here once finalized:
-
-```bash
-# Install dependencies
-# pip install -r requirements.txt
-
-# Run FFN-based ResNet experiments
-# python ...
-
-# Run Transformer experiments
-# python ...
-```
 
 ## Citation
 
