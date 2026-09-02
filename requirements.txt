@@ -1,0 +1,26 @@
+# compute
+numpy<2
+pandas
+
+# time
+tqdm
+
+# main
+protobuf
+tokenizers
+transformers
+imageio
+pot
+torch
+torchvision
+torchaudio
+scikit-learn
+
+# plot
+matplotlib
+ipywidgets
+ipympl
+
+# nb
+jupyter
+notebook
