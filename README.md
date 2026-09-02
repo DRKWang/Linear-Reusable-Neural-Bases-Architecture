@@ -97,7 +97,7 @@ The shared sensor and response layers define the reusable neural bases, while th
 
 Because the neural bases are reused across multiple blocks, their gradients accumulate over all reuse positions.
 
-To keep update magnitudes comparable to conventional networks, LRNBA rescales gradients of reused parameters by the number of reuse positions:
+To keep updated gradient magnitudes comparable to standard networks, LRNBA rescales gradients of reused parameters by the number of reuse:
 
 ```text
 def average_gradients(layers, depth):
@@ -108,7 +108,7 @@ def average_gradients(layers, depth):
         )
 ```
 
-The coefficient-table parameters are updated directly without this rescaling.
+In contrast, the coefficient-table parameters are updated directly without this rescaling.
 
 ### Initialization
 
@@ -287,14 +287,14 @@ The results show that depth expansion gives larger gains than width expansion in
 
 ### Model Comparison
 
-| Model | Parameters | Average Time / Epoch |
-|---|---:|---:|
+| Model                 | Parameters | Average Time / Epoch |
+|-----------------------|---:|---:|
 | Classical Transformer | 42.27M | 24.126 s |
-| LRNBA $2h2m$ | 23.36M | 37.040 s |
-| LRNBA $4h4m$ | 29.66M | 62.656 s |
-| LRNBA $6h6m$ | 35.97M | 86.877 s |
+| LRNBA $2H2m$          | 23.36M | 37.040 s |
+| LRNBA $4H4m$          | 29.66M | 62.656 s |
+| LRNBA $6H6m$          | 35.97M | 86.877 s |
 
-Increasing the number of reusable attention and FFN bases consistently accelerates convergence and lowers the final training loss. The $6h6m$ model achieves the fastest convergence and lowest training loss while using about three-quarters of the parameters of the classical Transformer.
+Increasing the number of reusable attention and FFN bases consistently accelerates convergence and lowers the final training loss. The $6H6m$ model achieves the fastest convergence and lowest training loss while using about three-quarters of the parameters of the classical Transformer.
 
 ## Training-Time Trade-Off
 
